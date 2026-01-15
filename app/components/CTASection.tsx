@@ -25,21 +25,17 @@ export default function CTASection() {
         <section className="cta" id="contact">
             <div className="container">
                 <div className="cta-inner fade-in">
-                    <h2>Siap Memulai Proyek Website Anda?</h2>
-                    <p>Konsultasikan kebutuhan Anda sekarang dan dapatkan penawaran terbaik!</p>
+                    <h2><b>Saatnya Bisnismu Tampil Lebih <br /> Profesional & Siap Closing!</b></h2>
+                    <p>DiyonDev siap membantu kamu membangun website yang bukan cuma bagus, tapi juga cepat, responsif, dan siap promosi. Company profile, landing page, hingga toko online — semua kami buat sesuai kebutuhan bisnismu.</p>
+                    <p className="cta-highlight">Konsultasi GRATIS & respon cepat via WhatsApp</p>
+                    <p className="cta-action">Klik tombol di bawah untuk mulai sekarang.</p>
                     <div className="cta-buttons">
                         <Link
                             href="https://wa.me/6281234567890"
                             className="btn-white"
                             target="_blank"
                         >
-                            💬 Chat WhatsApp
-                        </Link>
-                        <Link
-                            href="mailto:hello@webcraft.id"
-                            className="btn-outline"
-                        >
-                            ✉️ Email Kami
+                            Konsultasi Via WhatsApp
                         </Link>
                     </div>
                 </div>

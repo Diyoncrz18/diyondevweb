@@ -4,32 +4,27 @@ import { useEffect } from 'react';
 
 const processSteps = [
     {
-        number: 1,
-        icon: '💬',
+        number: '01',
         title: 'Konsultasi',
         description: 'Kami mendengarkan kebutuhan dan goals bisnis Anda untuk memahami visi website yang ingin diwujudkan.'
     },
     {
-        number: 2,
-        icon: '📐',
+        number: '02',
         title: 'Perencanaan',
         description: 'Membuat wireframe dan mockup desain untuk approval sebelum masuk tahap development.'
     },
     {
-        number: 3,
-        icon: '💻',
+        number: '03',
         title: 'Development',
         description: 'Tim developer kami mengerjakan coding dengan teknologi terbaru dan best practices.'
     },
     {
-        number: 4,
-        icon: '🧪',
+        number: '04',
         title: 'Testing',
         description: 'Quality assurance menyeluruh untuk memastikan website bebas bug dan optimal.'
     },
     {
-        number: 5,
-        icon: '🚀',
+        number: '05',
         title: 'Launch',
         description: 'Deploy ke server produksi dan website Anda siap go-live!'
     }
@@ -59,26 +54,13 @@ export default function ProcessSection() {
                 <h2 className="fade-in">Proses Kerja Kami</h2>
                 <div className="zigzag-timeline">
                     {processSteps.map((step, index) => (
-                        <div key={index} className="timeline-item fade-in">
-                            {index % 2 === 0 ? (
-                                <>
-                                    <div className="timeline-content">
-                                        <h3>{step.icon} {step.title}</h3>
-                                        <p>{step.description}</p>
-                                    </div>
-                                    <div className="timeline-number">{step.number}</div>
-                                    <div style={{ width: '45%' }}></div>
-                                </>
-                            ) : (
-                                <>
-                                    <div style={{ width: '45%' }}></div>
-                                    <div className="timeline-number">{step.number}</div>
-                                    <div className="timeline-content">
-                                        <h3>{step.icon} {step.title}</h3>
-                                        <p>{step.description}</p>
-                                    </div>
-                                </>
-                            )}
+                        <div key={index} className="timeline-item fade-in" style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
+                            <div className="timeline-content">
+                                <h3>{step.title}</h3>
+                                <p>{step.description}</p>
+                            </div>
+                            <div className="timeline-number">{step.number}</div>
+                            <div style={{ width: '45%' }}></div>
                         </div>
                     ))}
                 </div>

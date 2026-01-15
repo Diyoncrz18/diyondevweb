@@ -4,40 +4,28 @@ import { useEffect } from 'react';
 
 const services = [
     {
-        icon: '🏢',
         title: 'Website Company Profile',
-        description: 'Website profesional untuk menampilkan identitas bisnis Anda. Desain elegan, konten terstruktur, dan SEO-friendly untuk meningkatkan kredibilitas perusahaan.',
-        size: 'large'
+        description: 'Website profesional untuk menampilkan identitas bisnis Anda.',
     },
     {
-        icon: '🛒',
         title: 'E-Commerce',
         description: 'Toko online lengkap dengan payment gateway.',
-        size: 'normal'
     },
     {
-        icon: '📄',
         title: 'Landing Page',
         description: 'Halaman promosi yang convert.',
-        size: 'normal'
     },
     {
-        icon: '⚙️',
         title: 'Custom Web',
         description: 'Sesuai kebutuhan spesifik Anda.',
-        size: 'normal'
     },
     {
-        icon: '💻',
         title: 'Web Application',
-        description: 'Sistem dan aplikasi berbasis web dengan fitur kompleks, dashboard, dan integrasi API.',
-        size: 'wide'
+        description: 'Sistem dan aplikasi berbasis web.',
     },
     {
-        icon: '🛠️',
         title: 'Maintenance & Support',
-        description: 'Layanan pemeliharaan berkala, update konten, backup, dan dukungan teknis 24/7.',
-        size: 'wide'
+        description: 'Pemeliharaan dan dukungan teknis 24/7.',
     }
 ];
 
@@ -52,7 +40,7 @@ export default function ServicesSection() {
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        document.querySelectorAll('.fade-in, .orbit-item').forEach(el => {
             observer.observe(el);
         });
 
@@ -69,14 +57,25 @@ export default function ServicesSection() {
                         <p>Dari ide hingga peluncuran, kami menyediakan layanan lengkap untuk membangun kehadiran digital yang powerful.</p>
                     </div>
                 </div>
-                <div className="bento-grid">
+
+                <div className="orbit-wrapper">
+                    {/* Lingkaran orbit */}
+                    <div className="orbit-ring"></div>
+
+                    {/* Lingkaran pusat */}
+                    <div className="orbit-center">
+                        <span>Layanan<br />Kami</span>
+                    </div>
+
+                    {/* Items melingkar */}
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className={`bento-item fade-in ${service.size === 'large' ? 'large' : ''} ${service.size === 'wide' ? 'wide' : ''}`}
+                            className={`orbit-item orbit-item-${index + 1}`}
+                            style={{ '--i': index } as React.CSSProperties}
                         >
-                            <div className="bento-icon">{service.icon}</div>
-                            <div>
+                            <div className="orbit-dot"></div>
+                            <div className="orbit-card">
                                 <h3>{service.title}</h3>
                                 <p>{service.description}</p>
                             </div>

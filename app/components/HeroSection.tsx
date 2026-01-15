@@ -69,23 +69,20 @@ export default function HeroSection() {
             <div className="container">
                 <div className="hero-content hero-centered">
                     <div className="hero-text fade-in">
-                        <p className="hero-subtitle">✨ Jasa Pembuatan Website Profesional</p>
                         <h1 className="hero-headline">
-                            <span className="line">Wujudkan</span>
-                            <span className="line gradient-text">Website Impian</span>
-                            <span className="line">Anda Bersama Kami</span>
+                            <span className="line gradient-text">Jasa Pembuatan Website Profesional & Responsif</span>
                         </h1>
                         <p className="hero-description">
-                            Kami menciptakan website yang tidak hanya indah, tapi juga fungsional dan menghasilkan.
-                            Dari company profile hingga e-commerce, kami siap membantu bisnis Anda berkembang di dunia digital.
+                            Bangun citra bisnis yang lebih profesional dengan website eksklusif dan performa tinggi.
+                            Desain modern, responsif, SEO-ready, dan siap bersaing di era digital.
                         </p>
                         <div className="hero-buttons">
-                            <Link href="#contact" className="btn-primary">🚀 Mulai Sekarang</Link>
+                            <Link href="#contact" className="btn-primary">Konsultasi Sekarang</Link>
                             <Link href="#portfolio" className="btn-secondary">Lihat Portfolio</Link>
                         </div>
                         <div className="hero-stats" ref={statsRef}>
                             <div className="stat-card">
-                                <div className="number" data-count="50">0</div>
+                                <div className="number" data-count="39">0</div>
                                 <div className="label">Proyek Selesai</div>
                             </div>
                             <div className="stat-card">
