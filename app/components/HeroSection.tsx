@@ -78,7 +78,7 @@ export default function HeroSection() {
                         </p>
                         <div className="hero-buttons">
                             <Link href="https://wa.me/6281344155598?text=Halo%20DiyonDev%2C%20saya%20tertarik%20untuk%20membuat%20website." className="btn-primary" target="_blank">Konsultasi Sekarang</Link>
-                            <Link href="#portfolio" className="btn-secondary">Lihat Portfolio</Link>
+                            <a href="https://portfolio.diyondev.my.id" target="_blank" rel="noopener noreferrer" className="btn-secondary">Lihat Portfolio</a>
                         </div>
                         <div className="hero-stats" ref={statsRef}>
                             <div className="stat-card">

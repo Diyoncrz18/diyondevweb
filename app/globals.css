@@ -1987,6 +1987,15 @@ h4 {
         min-height: auto;
     }
 
+    .hero-content {
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
     .hero-headline .line,
     .hero-headline .gradient-text {
         font-size: 1.6rem !important;
