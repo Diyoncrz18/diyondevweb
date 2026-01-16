@@ -7,6 +7,7 @@ import PortfolioSection from './components/PortfolioSection';
 import PricingSection from './components/PricingSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <PricingSection />
       <CTASection />
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
+

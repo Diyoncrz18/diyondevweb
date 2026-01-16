@@ -15,8 +15,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Jasa Pembuatan Website Profesional | WebCraft Studio",
+  title: "DiyonDev | Jasa Pembuatan Website Profesional",
   description: "Jasa pembuatan website profesional dengan desain modern dan harga terjangkau. Company profile, e-commerce, landing page, dan custom web app.",
+  icons: {
+    icon: '/logo1.png',
+    shortcut: '/logo1.png',
+    apple: '/logo1.png',
+  },
 };
 
 export default function RootLayout({

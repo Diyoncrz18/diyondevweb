@@ -31,7 +31,7 @@ export default function CTASection() {
                     <p className="cta-action">Klik tombol di bawah untuk mulai sekarang.</p>
                     <div className="cta-buttons">
                         <Link
-                            href="https://wa.me/6281234567890"
+                            href="https://wa.me/6281344155598?text=Halo%20DiyonDev%2C%20saya%20tertarik%20untuk%20konsultasi%20pembuatan%20website."
                             className="btn-white"
                             target="_blank"
                         >

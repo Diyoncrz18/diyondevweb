@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* CSS Updated: 2026-01-16 - WhatsApp Float Button Added */
+
 :root {
     --gradient-primary: linear-gradient(135deg, #1cb8e8 0%, #8fdf82 100%);
     --bg-dark: #0a0f14;
@@ -1547,6 +1549,11 @@ h4 {
     font-weight: 500;
 }
 
+/* Footer Navigation Wrapper - Two Column Layout */
+.footer-nav-wrapper {
+    display: contents;
+}
+
 .footer-column h4 {
     font-size: 1.1rem;
     margin-bottom: 25px;
@@ -1599,6 +1606,144 @@ h4 {
 .footer-credit {
     color: var(--text-secondary);
     font-size: 0.85rem;
+}
+
+/* Footer Social Media Icons */
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background: var(--gradient-primary);
+    border-color: var(--accent-1);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(28, 184, 232, 0.4);
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-social-text {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-top: 5px;
+}
+
+.footer-bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border-radius: 50%;
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+    transition: all 0.3s ease;
+    animation: whatsapp-pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float svg {
+    width: 28px;
+    height: 28px;
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    right: 75px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 6px solid rgba(0, 0, 0, 0.85);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    right: 70px;
+}
+
+@keyframes whatsapp-pulse {
+    0% {
+        box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 6px 30px rgba(37, 211, 102, 0.8), 0 0 0 10px rgba(37, 211, 102, 0.15);
+    }
+
+    100% {
+        box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+    }
+}
+
+/* Responsive WhatsApp Button */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .whatsapp-tooltip {
+        display: none;
+    }
 }
 
 /* Animations */
@@ -1661,9 +1806,10 @@ h4 {
 }
 
 @media (max-width: 768px) {
+
+    /* Hide navbar on mobile */
     .navbar {
-        width: 95%;
-        padding: 12px 20px;
+        display: none;
     }
 
     .nav-links {
@@ -1748,6 +1894,7 @@ h4 {
 
     .timeline-item {
         flex-direction: column !important;
+        position: relative;
     }
 
     .timeline-content {
@@ -1760,9 +1907,33 @@ h4 {
         left: auto;
         transform: none;
         margin-bottom: 20px;
+        z-index: 2;
     }
 
+    /* Mobile connecting line between process steps */
     .zigzag-timeline::before {
+        display: block;
+        left: 50%;
+        width: 3px;
+        background: linear-gradient(180deg, var(--accent-1), var(--accent-2), var(--accent-3));
+        opacity: 0.5;
+    }
+
+    /* Vertical line from each timeline number to the next */
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
+        height: calc(100% + 10px);
+        background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+        z-index: 0;
+        opacity: 0.6;
+    }
+
+    .timeline-item:last-child::before {
         display: none;
     }
 
@@ -1780,7 +1951,463 @@ h4 {
         text-align: center;
     }
 
-    .social-links {
+    /* Footer Nav Wrapper - Side by Side Centered on Mobile */
+    .footer-nav-wrapper {
+        display: flex;
         justify-content: center;
+        gap: 40px;
+        width: 100%;
+    }
+
+    .footer-nav-wrapper .footer-column {
+        text-align: left;
+    }
+
+    .footer-nav-wrapper .footer-column h4::after {
+        left: 0;
+        transform: none;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-column h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-tagline {
+        justify-content: center;
+    }
+
+    /* Hero Section - Mobile Improvements */
+    .hero {
+        padding: 140px 0 80px;
+        min-height: auto;
+    }
+
+    .hero-headline .line,
+    .hero-headline .gradient-text {
+        font-size: 1.6rem !important;
+        line-height: 1.3;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 20px;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        padding: 14px 24px;
+        font-size: 0.95rem;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .stat-card {
+        padding: 15px 20px;
+        flex: 0 0 auto;
+        min-width: 100px;
+    }
+
+    .stat-card .number {
+        font-size: 1.4rem;
+    }
+
+    .stat-card .label {
+        font-size: 0.75rem;
+    }
+
+    /* Services Section - Mobile */
+    .services {
+        padding: 60px 0;
+    }
+
+    .services h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .section-header {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .section-intro h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .section-intro p {
+        font-size: 0.85rem;
+    }
+
+    /* Orbit Section - Mobile Responsive */
+    .orbit-wrapper {
+        height: 450px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .orbit-ring {
+        width: 300px;
+        height: 300px;
+    }
+
+    .orbit-center {
+        width: 100px;
+        height: 100px;
+    }
+
+    .orbit-center span {
+        font-size: 0.75rem;
+    }
+
+    .orbit-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .orbit-card {
+        padding: 10px 12px;
+        max-width: 130px;
+        border-radius: 10px;
+    }
+
+    .orbit-card h3 {
+        font-size: 0.7rem;
+        margin-bottom: 3px;
+    }
+
+    .orbit-card p {
+        font-size: 0.6rem;
+        line-height: 1.3;
+    }
+
+    .orbit-item {
+        gap: 4px;
+    }
+
+    /* Adjust orbit item positions for mobile */
+    .orbit-item-2,
+    .orbit-item-3 {
+        right: -5px;
+    }
+
+    .orbit-item-5,
+    .orbit-item-6 {
+        left: -5px;
+    }
+
+    .bento-grid {
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .bento-item {
+        padding: 25px 20px;
+    }
+
+    .bento-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .bento-item p {
+        font-size: 0.9rem;
+    }
+
+    /* Why Us Section - Mobile */
+    .why-us {
+        padding: 60px 0;
+    }
+
+    .why-us h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .orbital-container {
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .orbital-item {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .orbital-item h3 {
+        font-size: 1rem;
+    }
+
+    .orbital-item p {
+        font-size: 0.85rem;
+    }
+
+    /* Process Section - Mobile */
+    .process {
+        padding: 60px 0;
+    }
+
+    .process h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .zigzag-timeline {
+        padding: 0 10px;
+    }
+
+    .timeline-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+    /* Portfolio Section - Mobile */
+    .portfolio {
+        padding: 60px 0;
+    }
+
+    .portfolio h2 {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    .portfolio-item {
+        width: 200px;
+    }
+
+    /* Pricing Section - Mobile */
+    .pricing {
+        padding: 60px 0;
+    }
+
+    .pricing h2 {
+        font-size: 1.8rem;
+    }
+
+    .pricing-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+
+    .pricing-tabs {
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+
+    .pricing-tab {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+
+    .pricing-grid {
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .pricing-card {
+        padding: 30px 25px;
+    }
+
+    .pricing-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .pricing-card .price {
+        font-size: 2rem;
+    }
+
+    .pricing-features li {
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
+
+    /* CTA Section - Mobile */
+    .cta {
+        padding: 60px 0;
+    }
+
+    .cta-inner {
+        padding: 40px 25px;
+        border-radius: 25px;
+    }
+
+    .cta h2 {
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+
+    .cta p {
+        font-size: 0.95rem;
+    }
+
+    .cta .cta-highlight {
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta .btn-white {
+        padding: 14px 30px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    /* Footer - Mobile */
+    .footer {
+        padding: 50px 0 20px;
+    }
+
+    .footer-brand p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .footer-column {
+        margin-bottom: 25px;
+    }
+
+    .footer-column h4 {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .footer-column li {
+        margin-bottom: 10px;
+    }
+
+    .footer-social-text {
+        padding: 0 20px;
+    }
+
+    .footer-bottom {
+        padding-top: 20px;
+    }
+
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+
+    /* Testimonials - Mobile */
+    .testimonials {
+        padding: 60px 0;
+    }
+
+    .testimonials h2 {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    .testimonial-card {
+        padding: 30px 20px;
+    }
+
+    .testimonial-card .quote {
+        font-size: 1rem;
+    }
+}
+
+/* Extra Small Devices (max 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .navbar {
+        top: 10px;
+        padding: 10px 15px;
+    }
+
+    .hero-headline .line,
+    .hero-headline .gradient-text {
+        font-size: 1.4rem !important;
+    }
+
+    .hero-stats {
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 12px 15px;
+        min-width: 90px;
+    }
+
+    .stat-card .number {
+        font-size: 1.2rem;
+    }
+
+    .stat-card .label {
+        font-size: 0.7rem;
+    }
+
+    .services h2,
+    .why-us h2,
+    .process h2,
+    .portfolio h2,
+    .pricing h2,
+    .testimonials h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta h2 {
+        font-size: 1.3rem;
+    }
+
+    .pricing-card {
+        padding: 25px 20px;
+    }
+
+    .pricing-card .price {
+        font-size: 1.8rem;
+    }
+
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .whatsapp-float svg {
+        width: 24px;
+        height: 24px;
     }
 }
